@@ -7,14 +7,12 @@ import (
 	"strings"
 )
 
-func cleanSpaces(s string) string {
-	return strings.Join(strings.Fields(s), " ")
-}
+
 
 func eval(text string) (result float64, err error) {
 	args := strings.Split(cleanSpaces(text), " ")
-	if len(args) < 3 {
-		return 0, errors.New("Please provide arguments in the right format <1st num> <arithmetic> <2nd num>")
+	if len(args) != 3 {
+		return 0, errors.New(message())
 	}
 	x, err := strconv.ParseFloat(args[0], 64)
 	if err != nil {
@@ -36,7 +34,7 @@ func eval(text string) (result float64, err error) {
 	case "/":
 		result = x / y
 	default:
-		fmt.Println("Invalid arguments")
+		fmt.Println(message())
 	}
 	return
 }

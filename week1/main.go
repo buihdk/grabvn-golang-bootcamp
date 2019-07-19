@@ -8,18 +8,18 @@ import (
 
 func main() {
     scanner := bufio.NewScanner(os.Stdin)
-    fmt.Println("Format: <1st num> <arithmetic> <2nd num>")
+    fmt.Println("Goland Bootcamp Week 1 Assignment")
+    fmt.Println(message())
 	fmt.Print("> ")
 
 	for scanner.Scan() {
         res, err := eval(scanner.Text())
         if err != nil {
         	fmt.Println(err.Error())
-			fmt.Print("> ")
+        	fmt.Print("> ")
         	continue
-		} else {
-			fmt.Println(res)
 		}
+		fmt.Println(res)
         fmt.Print("> ")
     }
 }
